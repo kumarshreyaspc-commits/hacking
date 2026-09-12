@@ -1,1731 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <title>TejasLab</title>
-
-    <meta name="description" content="TejasLab - Official website by Tejas">
-    <meta name="robots" content="index, follow">
-
-    <meta name="google-site-verification" content="APNA-GOOGLE-CODE-YAHAN-RAKHO">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEJAS // CYBER LAB</title>
+<meta name="description" content="TEJAS Cyber Lab — educational cybersecurity, web development, tools, CTF challenges and projects.">
+<meta name="robots" content="index, follow">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:#020604;color:#eafff2;
-  font-family:Consolas,monospace;overflow-x:hidden
-}
-canvas{position:fixed;inset:0;z-index:-2;opacity:.13}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 50% 10%,#00ff8818,transparent 40%);
-  z-index:-1
-}
-nav{
-  position:fixed;top:0;left:0;width:100%;z-index:1000;
-  padding:17px 6%;display:flex;justify-content:space-between;
-  align-items:center;background:#020804dd;
-  backdrop-filter:blur(14px);border-bottom:1px solid #12351f
-}
-.logo{color:#00ff88;font-size:21px;font-weight:bold;letter-spacing:3px}
-nav a{color:#789281;text-decoration:none;margin-left:15px;font-size:11px}
+body{background:#020604;color:#eafff2;font-family:Consolas,monospace;overflow-x:hidden}
+canvas{position:fixed;inset:0;z-index:-2;opacity:.12}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 10%,#00ff8818,transparent 40%);z-index:-1}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 6%;display:flex;justify-content:space-between;align-items:center;background:#020804e8;backdrop-filter:blur(14px);border-bottom:1px solid #12351f}
+.logo{color:#00ff88;font-size:20px;font-weight:bold;letter-spacing:3px}
+nav a{color:#789281;text-decoration:none;margin-left:13px;font-size:10px}
 nav a:hover{color:#00ff88}
-
-section{padding:100px 6%}
-.container{max-width:1100px;margin:auto}
-.hero{min-height:100vh;padding-top:150px;display:flex;align-items:center}
-.status,.label{color:#00ff88;letter-spacing:4px;font-size:11px}
-.hero h1{
-  font-size:clamp(60px,12vw,140px);
-  line-height:.85;margin:25px 0
-}
+section{padding:95px 6%}.container{max-width:1100px;margin:auto}
+.hero{min-height:100vh;padding-top:145px;display:flex;align-items:center}
+.status,.label{color:#00ff88;letter-spacing:3px;font-size:11px}
+.hero h1{font-size:clamp(55px,11vw,135px);line-height:.86;margin:22px 0}
 .hero h1 span,.title span{color:#00ff88}
-.hero-text{
-  max-width:750px;color:#789281;
-  line-height:1.8;font-size:16px
-}
-
-.btn{
-  display:inline-block;padding:13px 21px;margin:18px 7px 5px 0;
-  border:1px solid #00aa5a;border-radius:4px;
-  color:#00ff88;background:transparent;
-  font-family:inherit;cursor:pointer;text-decoration:none;
-  transition:.25s
-}
-.btn:hover{
-  background:#00ff88;color:#001b0d;
-  box-shadow:0 0 30px #00ff8844
-}
-
-.terminal,.lab-box,.contact-box{
-  border:1px solid #16482a;
-  background:#030805;border-radius:7px
-}
-.terminal{
-  max-width:850px;margin-top:45px;overflow:hidden
-}
-.terminal-top{
-  padding:12px 16px;border-bottom:1px solid #12351f;
-  color:#557261;font-size:11px
-}
-.terminal-body{
-  padding:20px;min-height:220px;
-  color:#8affb0;line-height:1.8
-}
-.prompt{color:#00ff88}
-
-.title{
-  font-size:clamp(38px,6vw,65px);
-  margin:12px 0 45px
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:20px
-}
-
-.card{
-  padding:28px;
-  background:linear-gradient(145deg,#07130b,#020604);
-  border:1px solid #12351f;
-  border-radius:7px;
-  transition:.3s
-}
-.card:hover{
-  transform:translateY(-6px);
-  border-color:#00aa5a
-}
-.card-icon{font-size:30px;margin-bottom:15px}
-.card h3{margin-bottom:10px}
-.card p,.lab-box p,.contact-box p{
-  color:#718878;line-height:1.7;font-size:13px
-}
-
-.lab-box{padding:28px;margin-bottom:20px}
-.lab-box h3{
-  color:#00ff88;margin-bottom:10px
-}
-
-input,textarea,select{
-  width:100%;padding:13px;margin-top:11px;
-  background:#010302;border:1px solid #16482a;
-  color:#eafff2;outline:none;font-family:inherit
-}
-input:focus,textarea:focus,select:focus{
-  border-color:#00ff88
-}
-
-.output{
-  margin-top:17px;padding:14px;
-  min-height:45px;background:#010302;
-  border-left:2px solid #00ff88;
-  color:#82a88f;line-height:1.7;
-  white-space:pre-wrap
-}
-
-.score{
-  font-size:40px;color:#00ff88;margin:14px 0
-}
-
-.data-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;margin-top:18px
-}
-.data{
-  border:1px solid #12351f;
-  padding:17px;background:#020604
-}
-.data small{
-  display:block;color:#557261;margin-bottom:7px
-}
-.data strong{
-  color:#00ff88;word-break:break-word
-}
-
-.stat-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:15px;margin-top:20px
-}
-.stat{
-  border:1px solid #12351f;
-  padding:22px;background:#020604
-}
-.stat small{color:#557261;display:block}
-.stat strong{font-size:30px;color:#00ff88}
-
-.map{
-  width:100%;height:330px;
-  margin-top:20px;border:1px solid #12351f
-}
-
-.contact{text-align:center}
-.contact-box{
-  max-width:700px;margin:auto;padding:45px 25px
-}
-
-.instagram{
-  display:inline-block;padding:14px 28px;
-  background:#00ff88;color:#001b0d;
-  text-decoration:none;font-weight:bold;
-  border-radius:4px
-}
-
-footer{
-  text-align:center;padding:35px;
-  border-top:1px solid #12351f;color:#48604f
-}
-footer span{color:#00ff88}
-
-@media(max-width:700px){
-  nav a{display:none}
-  section{padding:80px 6%}
-  .hero{padding-top:120px}
-}
+.hero-text{max-width:760px;color:#789281;line-height:1.8;font-size:15px}
+.btn{display:inline-block;padding:12px 19px;margin:15px 6px 5px 0;border:1px solid #00aa5a;border-radius:4px;color:#00ff88;background:transparent;font-family:inherit;cursor:pointer;text-decoration:none;transition:.25s}
+.btn:hover{background:#00ff88;color:#001b0d;box-shadow:0 0 28px #00ff8844}
+.terminal,.lab-box,.contact-box{border:1px solid #16482a;background:#030805;border-radius:7px}
+.terminal{max-width:850px;margin-top:40px;overflow:hidden}
+.terminal-top{padding:11px 15px;border-bottom:1px solid #12351f;color:#557261;font-size:11px}
+.terminal-body{padding:18px;min-height:210px;color:#8affb0;line-height:1.75}
+.prompt{color:#00ff88}.title{font-size:clamp(38px,6vw,65px);margin:12px 0 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{padding:25px;background:linear-gradient(145deg,#07130b,#020604);border:1px solid #12351f;border-radius:7px;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:#00aa5a}
+.card-icon{font-size:28px;margin-bottom:12px}.card h3{margin-bottom:9px}
+.card p,.lab-box p,.contact-box p{color:#718878;line-height:1.7;font-size:13px}
+.lab-box{padding:25px;margin-bottom:18px}.lab-box h3{color:#00ff88;margin-bottom:9px}
+input,textarea,select{width:100%;padding:12px;margin-top:10px;background:#010302;border:1px solid #16482a;color:#eafff2;outline:none;font-family:inherit;border-radius:3px}
+input:focus,textarea:focus,select:focus{border-color:#00ff88}
+.output{margin-top:15px;padding:13px;min-height:43px;background:#010302;border-left:2px solid #00ff88;color:#82a88f;line-height:1.7;white-space:pre-wrap}
+.score{font-size:38px;color:#00ff88;margin:12px 0}
+.data-grid,.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:17px}
+.data,.stat{border:1px solid #12351f;padding:16px;background:#020604}
+.data small,.stat small{display:block;color:#557261;margin-bottom:6px}.data strong,.stat strong{color:#00ff88;word-break:break-word}
+.stat strong{font-size:27px}
+.badge{display:inline-block;border:1px solid #16482a;padding:6px 10px;margin:4px;color:#8affb0;font-size:11px}
+.map{width:100%;height:300px;margin-top:18px;border:1px solid #12351f}
+.contact{text-align:center}.contact-box{max-width:700px;margin:auto;padding:40px 25px}
+.instagram{display:inline-block;padding:13px 25px;background:#00ff88;color:#001b0d;text-decoration:none;font-weight:bold;border-radius:4px;margin-top:15px}
+footer{text-align:center;padding:32px;border-top:1px solid #12351f;color:#48604f}footer span{color:#00ff88}
+.hidden{display:none!important}.success{color:#00ff88}.danger{color:#ff6b6b}
+.notice{font-size:11px;color:#557261;margin-top:9px}
+.project-link{color:#00ff88;text-decoration:none}.project-link:hover{text-decoration:underline}
+@media(max-width:700px){nav a{display:none}section{padding:75px 6%}.hero{padding-top:120px}.hero h1{font-size:62px}}
 </style>
 </head>
-
 <body>
-
 <canvas id="matrix"></canvas>
 
 <nav>
   <div class="logo">TEJAS//</div>
   <div>
-    <a href="#home">HOME</a>
-    <a href="#lab">LAB</a>
-    <a href="#ctf">CTF</a>
-    <a href="#tools">TOOLS</a>
-    <a href="#number">NUMBER</a>
-    <a href="#location">LOCATION</a>
-    <a href="#host">HOST</a>
+    <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#lab">LAB</a>
+    <a href="#ctf">CTF</a><a href="#tools">TOOLS</a><a href="#projects">PROJECTS</a>
+    <a href="#host">HOST</a><a href="#contact">CONTACT</a>
   </div>
 </nav>
 
-
-<!-- HOME -->
-
 <section class="hero" id="home">
 <div class="container">
-
-<div class="status">● SYSTEM ONLINE // CYBER LAB X</div>
-
-<h1>
-CYBER<br>
-<span>TEJAS.</span>
-</h1>
-
-<p class="hero-text">
-Welcome to TEJAS Cyber Lab — a futuristic educational
-environment for cybersecurity learning, defensive
-experiments, networking concepts, programming and gaming.
-</p>
-
-<a class="btn" href="#lab">ENTER LAB</a>
-<a class="btn" href="#ctf">CTF ARENA</a>
-
+<div class="status">● SYSTEM ONLINE // EDUCATIONAL CYBER LAB</div>
+<h1>CYBER<br><span>TEJAS.</span></h1>
+<p class="hero-text">Welcome to TEJAS Cyber Lab — a personal technology portfolio for learning cybersecurity, web development, programming, networking concepts and digital safety through safe simulations and interactive tools.</p>
+<a class="btn" href="#lab">ENTER LAB</a><a class="btn" href="#projects">VIEW PROJECTS</a>
 <div class="terminal">
-
-<div class="terminal-top">
-TEJAS@CYBER-LAB — TERMINAL
-</div>
-
+<div class="terminal-top">TEJAS@CYBER-LAB — TERMINAL</div>
 <div class="terminal-body" id="terminalOutput">
+<div><span class="prompt">tejas@lab:~$</span> boot</div>
+<div>Cyber Lab initialized successfully.</div>
+<div><span class="prompt">tejas@lab:~$</span> help</div>
+<div>commands: help | status | whoami | projects | clear</div>
+<input id="terminalInput" placeholder="Type a command..." onkeydown="terminalCommand(event)">
+</div></div>
+</div></section>
 
-<div>
-<span class="prompt">tejas@lab:~$</span> boot
+<section id="about"><div class="container">
+<div class="label">01 // PROFILE</div><h2 class="title">About <span>Tejas</span></h2>
+<div class="lab-box"><h3>👨‍💻 Technology Explorer</h3>
+<p>This site is a practical learning project combining front-end development with safe cybersecurity education. Everything in the lab is designed for the user's own browser or fictional lab data.</p>
+<div><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">Cyber Safety</span><span class="badge">CTF</span><span class="badge">Networking Concepts</span></div>
 </div>
-
-<div>Cyber Lab X initialized.</div>
-
-<div>
-<span class="prompt">tejas@lab:~$</span> help
-</div>
-
-<div>
-commands: help | status | whoami | scan | clear
-</div>
-
-<input
-id="terminalInput"
-placeholder="Type a command..."
-onkeydown="terminalCommand(event)"
->
-
-</div>
-</div>
-
-</div>
-</section>
-
-
-<!-- LAB -->
-
-<section id="lab">
-<div class="container">
-
-<div class="label">01 // CYBER LAB</div>
-<h2 class="title">Defense <span>Tools</span></h2>
-
-<div class="lab-box">
-
-<h3>🌐 Network Scanner Simulator</h3>
-
-<p>
-Educational simulation using fictional lab devices.
-No external systems are scanned.
-</p>
-
-<button class="btn" onclick="runScan()">RUN SCAN</button>
-
-<div class="output" id="scanOutput">
-Scanner ready...
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🔎 Port Scanner Simulator</h3>
-
-<p>
-Safe simulated server showing example ports.
-</p>
-
-<button class="btn" onclick="runPorts()">SCAN PORTS</button>
-
-<div class="output" id="portOutput">
-Waiting...
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🚨 Threat Monitor</h3>
-
-<p>
-Defensive cybersecurity training simulation.
-</p>
-
-<button class="btn" onclick="threatScan()">CHECK SYSTEM</button>
-
-<div class="output" id="threatOutput">
-Monitor idle...
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🛡️ Security Checklist</h3>
-
-<label>
-<input type="checkbox" class="securityCheck"
-onchange="securityScore()">
-Use unique passwords
-</label>
-
-<label>
-<input type="checkbox" class="securityCheck"
-onchange="securityScore()">
-Enable 2FA
-</label>
-
-<label>
-<input type="checkbox" class="securityCheck"
-onchange="securityScore()">
-Keep software updated
-</label>
-
-<label>
-<input type="checkbox" class="securityCheck"
-onchange="securityScore()">
-Avoid suspicious links
-</label>
-
-<div class="score" id="securityScore">0%</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- CTF -->
-
-<section id="ctf">
-<div class="container">
-
-<div class="label">02 // CTF ARENA</div>
-<h2 class="title">Mission <span>Control</span></h2>
-
-<div class="lab-box">
-
-<h3>🧩 LEVEL 1 — Base64</h3>
-
-<p>
-Decode:
-<br><br>
-<b style="color:#00ff88">U0VDVVJJVFk=</b>
-</p>
-
-<input id="ctf1" placeholder="Your answer">
-
-<button class="btn" onclick="checkCTF1()">
-SUBMIT
-</button>
-
-<div class="output" id="ctf1Output">
-Mission locked...
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🧩 LEVEL 2 — Caesar Cipher</h3>
-
-<p>
-Shift each letter back by 3:
-<br><br>
-<b style="color:#00ff88">VHFXULWB</b>
-</p>
-
-<input id="ctf2" placeholder="Your answer">
-
-<button class="btn" onclick="checkCTF2()">
-SUBMIT
-</button>
-
-<div class="output" id="ctf2Output">
-Mission locked...
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🏆 XP</h3>
-
-<div class="score" id="xp">
-0 XP
-</div>
-
-<p>
-XP is stored locally in this browser.
-</p>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- TOOLS -->
-
-<section id="tools">
-<div class="container">
-
-<div class="label">03 // DIGITAL TOOLS</div>
-<h2 class="title">Utility <span>Deck</span></h2>
-
-
-<div class="lab-box">
-
-<h3>🧬 Base64 Encoder / Decoder</h3>
-
-<input id="base64Input" placeholder="Enter text">
-
-<button class="btn" onclick="encodeBase64()">
-ENCODE
-</button>
-
-<button class="btn" onclick="decodeBase64()">
-DECODE
-</button>
-
-<div class="output" id="base64Output">
-—
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🔐 Password Generator</h3>
-
-<button class="btn" onclick="generatePassword()">
-GENERATE PASSWORD
-</button>
-
-<div class="output" id="generatedPassword">
-—
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>#️⃣ SHA-256 Hash Demo</h3>
-
-<input id="hashInput" placeholder="Enter text">
-
-<button class="btn" onclick="makeHash()">
-GENERATE HASH
-</button>
-
-<div class="output" id="hashOutput">
-—
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🔄 Caesar Cipher</h3>
-
-<input id="caesarInput" placeholder="Text">
-
-<input
-id="caesarShift"
-type="number"
-value="3"
-placeholder="Shift"
->
-
-<button class="btn" onclick="caesarEncode()">
-ENCODE
-</button>
-
-<div class="output" id="caesarOutput">
-—
-</div>
-
-</div>
-
-
-<div class="lab-box">
-
-<h3>🧠 Cyber Quiz</h3>
-
-<p>
-Which is safer?
-</p>
-
-<select id="quizAnswer">
-<option value="">Choose...</option>
-<option value="a">Same password everywhere</option>
-<option value="b">Unique passwords + 2FA</option>
-<option value="c">Sharing passwords publicly</option>
-</select>
-
-<button class="btn" onclick="quiz()">
-CHECK
-</button>
-
-<div class="output" id="quizOutput">
-—
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- NUMBER -->
-
-<section id="number">
-<div class="container">
-
-<div class="label">04 // NUMBER INTELLIGENCE</div>
-<h2 class="title">Phone <span>Analyzer</span></h2>
-
-<div class="lab-box">
-
-<h3>📱 Phone Number Analyzer</h3>
-
-<p>
-Checks basic formatting and recognizes common
-international calling codes. It does not track
-a person's location or identity.
-</p>
-
-<input
-id="phone"
-placeholder="Example: +91 9876543210"
->
-
-<button class="btn" onclick="analyzeNumber()">
-ANALYZE NUMBER
-</button>
-
-<div class="data-grid">
-
-<div class="data">
-<small>COUNTRY CODE</small>
-<strong id="countryCode">—</strong>
-</div>
-
-<div class="data">
-<small>FORMAT</small>
-<strong id="numberFormat">—</strong>
-</div>
-
-<div class="data">
-<small>STATUS</small>
-<strong id="numberStatus">—</strong>
-</div>
-
-</div>
-
-<div class="output" id="numberOutput">
-Waiting for number...
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- LOCATION -->
-
-<section id="location">
-<div class="container">
-
-<div class="label">05 // PERMISSION BASED</div>
-<h2 class="title">Location <span>Lab</span></h2>
-
-<div class="lab-box">
-
-<h3>📍 My Current Location</h3>
-
-<p>
-Press the button and your browser will request
-location permission. The page can then show an
-address and map for the device that granted permission.
-</p>
-
-<button class="btn" onclick="getLocation()">
-SHARE MY LOCATION
-</button>
-
-<div class="data-grid">
-
-<div class="data">
-<small>ADDRESS</small>
-<strong id="address">—</strong>
-</div>
-
-<div class="data">
-<small>CITY</small>
-<strong id="city">—</strong>
-</div>
-
-<div class="data">
-<small>STATE</small>
-<strong id="state">—</strong>
-</div>
-
-<div class="data">
-<small>COUNTRY</small>
-<strong id="country">—</strong>
-</div>
-
-<div class="data">
-<small>POSTCODE</small>
-<strong id="postcode">—</strong>
-</div>
-
-</div>
-
-<div class="output" id="locationOutput">
-Location permission has not been requested.
-</div>
-
-<iframe
-id="map"
-class="map"
-title="Location Map">
-</iframe>
-
-<a
-id="googleMaps"
-class="btn"
-target="_blank"
-rel="noopener noreferrer"
-style="display:none">
-OPEN GOOGLE MAPS
-</a>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- PROFILE -->
-
-<section>
-<div class="container">
-
-<div class="label">06 // PROFILE</div>
-<h2 class="title">My <span>Interests</span></h2>
-
 <div class="grid">
+<div class="card"><div class="card-icon">💻</div><h3>Web Development</h3><p>Building responsive interfaces with HTML, CSS and JavaScript.</p></div>
+<div class="card"><div class="card-icon">🛡️</div><h3>Cybersecurity</h3><p>Learning defensive security, authentication concepts and safe CTF-style puzzles.</p></div>
+<div class="card"><div class="card-icon">🎮</div><h3>Gaming</h3><p>Gaming, experiments and technology projects.</p></div>
+<div class="card"><div class="card-icon">🌐</div><h3>Networking</h3><p>Understanding ports, protocols and network concepts through simulations.</p></div>
+</div></div></section>
 
-<div class="card">
-<div class="card-icon">💻</div>
-<h3>Web Development</h3>
-<p>HTML, CSS and JavaScript projects.</p>
+<section id="lab"><div class="container">
+<div class="label">02 // CYBER LAB</div><h2 class="title">Defense <span>Tools</span></h2>
+<div class="lab-box"><h3>🌐 Network Scanner Simulator</h3><p>Uses fictional devices only. No external systems are scanned.</p><button class="btn" onclick="runScan()">RUN SIMULATION</button><div class="output" id="scanOutput">Scanner ready...</div></div>
+<div class="lab-box"><h3>🔎 Port Scanner Simulator</h3><p>Educational example of common ports on a fictional lab server.</p><button class="btn" onclick="runPorts()">SCAN LAB SERVER</button><div class="output" id="portOutput">Waiting...</div></div>
+<div class="lab-box"><h3>🚨 Threat Monitor</h3><p>Simple defensive checklist simulation.</p><button class="btn" onclick="threatScan()">CHECK SYSTEM</button><div class="output" id="threatOutput">Monitor idle...</div></div>
+<div class="lab-box"><h3>🛡️ Security Score</h3>
+<label><input type="checkbox" class="securityCheck" onchange="securityScore()"> Use unique passwords</label>
+<label><input type="checkbox" class="securityCheck" onchange="securityScore()"> Enable 2FA</label>
+<label><input type="checkbox" class="securityCheck" onchange="securityScore()"> Keep software updated</label>
+<label><input type="checkbox" class="securityCheck" onchange="securityScore()"> Avoid suspicious links</label>
+<div class="score" id="securityScore">0%</div></div>
+</div></section>
+
+<section id="ctf"><div class="container">
+<div class="label">03 // SAFE CTF ARENA</div><h2 class="title">Mission <span>Control</span></h2>
+<div class="lab-box"><h3>🧩 LEVEL 1 — Base64</h3><p>Decode: <b style="color:#00ff88">U0VDVVJJVFk=</b></p><input id="ctf1" placeholder="Your answer"><button class="btn" onclick="checkCTF1()">SUBMIT</button><div class="output" id="ctf1Output">Mission locked...</div></div>
+<div class="lab-box"><h3>🧩 LEVEL 2 — Caesar Cipher</h3><p>Shift each letter back by 3: <b style="color:#00ff88">VHFXULWB</b></p><input id="ctf2" placeholder="Your answer"><button class="btn" onclick="checkCTF2()">SUBMIT</button><div class="output" id="ctf2Output">Mission locked...</div></div>
+<div class="lab-box"><h3>🏆 XP</h3><div class="score" id="xp">0 XP</div><p>XP is stored locally in this browser.</p></div>
+</div></section>
+
+<section id="tools"><div class="container">
+<div class="label">04 // DIGITAL TOOLKIT</div><h2 class="title">Utility <span>Deck</span></h2>
+<div class="lab-box"><h3>🧬 Base64 Encoder / Decoder</h3><input id="base64Input" placeholder="Enter text"><button class="btn" onclick="encodeBase64()">ENCODE</button><button class="btn" onclick="decodeBase64()">DECODE</button><div class="output" id="base64Output">—</div></div>
+<div class="lab-box"><h3>🔐 Password Generator</h3><button class="btn" onclick="generatePassword()">GENERATE PASSWORD</button><div class="output" id="generatedPassword">—</div><p class="notice">Generated locally; nothing is sent to a server.</p></div>
+<div class="lab-box"><h3>#️⃣ SHA-256 Hash Demo</h3><input id="hashInput" placeholder="Enter text"><button class="btn" onclick="makeHash()">GENERATE HASH</button><div class="output" id="hashOutput">—</div></div>
+<div class="lab-box"><h3>🔄 Caesar Cipher</h3><input id="caesarInput" placeholder="Text"><input id="caesarShift" type="number" value="3"><button class="btn" onclick="caesarEncode()">ENCODE</button><button class="btn" onclick="caesarDecode()">DECODE</button><div class="output" id="caesarOutput">—</div></div>
+<div class="lab-box"><h3>🧮 Unit Converter</h3><input id="km" type="number" placeholder="Kilometers"><button class="btn" onclick="convertUnits()">CONVERT</button><div class="output" id="unitOutput">—</div></div>
+<div class="lab-box"><h3>🧠 Cyber Safety Quiz</h3><p>Which is safer?</p><select id="quizAnswer"><option value="">Choose...</option><option value="a">Same password everywhere</option><option value="b">Unique passwords + 2FA</option><option value="c">Sharing passwords publicly</option></select><button class="btn" onclick="quiz()">CHECK</button><div class="output" id="quizOutput">—</div></div>
+</div></section>
+
+<section id="projects"><div class="container">
+<div class="label">05 // PORTFOLIO</div><h2 class="title">My <span>Projects</span></h2>
+<div class="grid">
+<div class="card"><div class="card-icon">🧪</div><h3>Cyber Lab</h3><p>Interactive defensive-security and CTF learning environment.</p></div>
+<div class="card"><div class="card-icon">🤖</div><h3>Chatbot UI</h3><p>Front-end chatbot interface concept that can later be connected to a real AI backend.</p></div>
+<div class="card"><div class="card-icon">🌐</div><h3>GitHub Pages</h3><p>Static website deployment, SEO basics and responsive design.</p></div>
+<div class="card"><div class="card-icon">🎯</div><h3>Learning Hub</h3><p>Notes and interactive experiments for technology and digital safety.</p></div>
 </div>
+<div class="lab-box" style="margin-top:18px"><h3>📚 What I Learned</h3><p>DOM manipulation, browser storage, Web Crypto API, geolocation permissions, responsive CSS, accessibility basics, safe cybersecurity simulations and static-site deployment.</p></div>
+</div></section>
 
-<div class="card">
-<div class="card-icon">🛡️</div>
-<h3>Cybersecurity</h3>
-<p>Defensive security and ethical learning.</p>
-</div>
+<section id="number"><div class="container">
+<div class="label">06 // LOCAL ANALYZER</div><h2 class="title">Phone <span>Format Lab</span></h2>
+<div class="lab-box"><h3>📱 Phone Number Format Checker</h3><p>Checks formatting and common calling codes only. It does not track a person, reveal identity, GPS position or subscriber information.</p>
+<input id="phone" placeholder="Example: +91 9876543210"><button class="btn" onclick="analyzeNumber()">ANALYZE</button>
+<div class="data-grid"><div class="data"><small>COUNTRY</small><strong id="countryCode">—</strong></div><div class="data"><small>FORMAT</small><strong id="numberFormat">—</strong></div><div class="data"><small>STATUS</small><strong id="numberStatus">—</strong></div></div>
+<div class="output" id="numberOutput">Waiting for number...</div></div>
+</div></section>
 
-<div class="card">
-<div class="card-icon">🎮</div>
-<h3>Gaming</h3>
-<p>Gaming, competitive gameplay and experiments.</p>
-</div>
+<section id="location"><div class="container">
+<div class="label">07 // PERMISSION BASED</div><h2 class="title">Location <span>Lab</span></h2>
+<div class="lab-box"><h3>📍 My Current Location</h3><p>Your browser asks for permission. Location is processed for the current page session; no hidden tracking is performed.</p>
+<button class="btn" onclick="getLocation()">SHARE MY LOCATION</button>
+<div class="data-grid"><div class="data"><small>ADDRESS</small><strong id="address">—</strong></div><div class="data"><small>CITY</small><strong id="city">—</strong></div><div class="data"><small>STATE</small><strong id="state">—</strong></div><div class="data"><small>COUNTRY</small><strong id="country">—</strong></div></div>
+<div class="output" id="locationOutput">Location permission has not been requested.</div>
+<iframe id="map" class="map" title="Location Map"></iframe>
+<a id="googleMaps" class="btn" target="_blank" rel="noopener noreferrer" style="display:none">OPEN GOOGLE MAPS</a>
+</div></div></section>
 
-<div class="card">
-<div class="card-icon">🌐</div>
-<h3>Networking</h3>
-<p>Learning how digital communication works.</p>
-</div>
+<section id="host"><div class="container">
+<div class="label">08 // HOST CONTROL</div><h2 class="title">Host <span>Dashboard</span></h2>
+<div class="lab-box"><h3>👑 HOST LOGIN</h3><p>Demo dashboard protected by a client-side password. This is not production authentication.</p>
+<input id="hostPassword" type="password" placeholder="Host password"><button class="btn" onclick="hostLogin()">LOGIN</button><div class="output" id="hostOutput">Awaiting authentication...</div></div>
+<div id="hostDashboard" class="lab-box hidden"><h3>📊 HOST ANALYTICS</h3>
+<div class="stat-grid"><div class="stat"><small>LOCAL PAGE VISITS</small><strong id="visitCount">0</strong></div><div class="stat"><small>CTF XP</small><strong id="hostXP">0</strong></div><div class="stat"><small>STATUS</small><strong>ONLINE</strong></div><div class="stat"><small>MODE</small><strong>DEMO</strong></div></div>
+<div class="output">HOST ACCESS GRANTED<br><br>Analytics are stored only in this browser using localStorage. No visitor identity, passwords or private location history are collected.</div>
+<button class="btn" onclick="resetLocalData()">RESET LOCAL DEMO DATA</button>
+</div></div></section>
 
-</div>
+<section id="contact" class="contact"><div class="container">
+<div class="label">09 // CONNECTION</div><h2 class="title">Contact <span>Me</span></h2>
+<div class="contact-box"><p>Gaming, technology and future projects.</p><a class="instagram" href="https://www.instagram.com/z4.zyrex/" target="_blank" rel="noopener noreferrer">📸 @z4.zyrex</a></div>
+</div></section>
 
-</div>
-</section>
-
-
-<!-- HOST -->
-
-<section id="host">
-<div class="container">
-
-<div class="label">07 // HOST CONTROL</div>
-<h2 class="title">Host <span>Dashboard</span></h2>
-
-<div class="lab-box">
-
-<h3>👑 HOST LOGIN</h3>
-
-<p>
-Demo local dashboard. For real production authentication,
-a server/backend is required.
-</p>
-
-<input
-id="hostPassword"
-type="password"
-placeholder="Host password"
->
-
-<button class="btn" onclick="hostLogin()">
-LOGIN
-</button>
-
-<div class="output" id="hostOutput">
-Awaiting authentication...
-</div>
-
-</div>
-
-
-<div
-id="hostDashboard"
-class="lab-box"
-style="display:none">
-
-<h3>📊 HOST ANALYTICS</h3>
-
-<div class="stat-grid">
-
-<div class="stat">
-<small>LOCAL VISITS</small>
-<strong id="visitCount">0</strong>
-</div>
-
-<div class="stat">
-<small>STATUS</small>
-<strong>ONLINE</strong>
-</div>
-
-<div class="stat">
-<small>MODE</small>
-<strong>LOCAL</strong>
-</div>
-
-</div>
-
-<div class="output">
-HOST ACCESS GRANTED
-
-Analytics mode:
-LOCAL BROWSER STORAGE
-
-No visitor identity,
-passwords or private location
-data are collected.
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="contact">
-
-<div class="container">
-
-<div class="label">08 // CONNECTION</div>
-
-<h2 class="title">
-Contact <span>Me</span>
-</h2>
-
-<div class="contact-box">
-
-<p>
-Follow my gaming, technology and future projects.
-</p>
-
-<a
-class="instagram"
-href="https://www.instagram.com/z4.zyrex/"
-target="_blank"
-rel="noopener noreferrer">
-📸 @z4.zyrex
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-<span>TEJAS//CYBER-LAB X</span>
-<br><br>
-Built with HTML • CSS • JavaScript
-</footer>
-
+<footer><span>TEJAS//CYBER-LAB X</span><br><br>Built with HTML • CSS • JavaScript<br><br><small>Educational project — use cybersecurity skills responsibly.</small></footer>
 
 <script>
-
-/* =========================
-   MATRIX BACKGROUND
-========================= */
-
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
-
-function resizeCanvas(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-}
-
-resizeCanvas();
-window.addEventListener("resize",resizeCanvas);
-
-const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$";
-const size=14;
-let drops=[];
-
-function resetDrops(){
-
-let columns=Math.floor(canvas.width/size);
-drops=Array(columns).fill(1);
-
-}
-
-resetDrops();
-
-function matrix(){
-
-ctx.fillStyle="rgba(2,6,4,.08)";
-ctx.fillRect(
-0,0,
-canvas.width,
-canvas.height
-);
-
-ctx.fillStyle="#00ff88";
-ctx.font=size+"px monospace";
-
-for(let i=0;i<drops.length;i++){
-
-let char=
-chars[Math.floor(Math.random()*chars.length)];
-
-ctx.fillText(
-char,
-i*size,
-drops[i]*size
-);
-
-if(
-drops[i]*size>canvas.height &&
-Math.random()>.975
-){
-drops[i]=0;
-}
-
-drops[i]++;
-
-}
-
-}
-
-setInterval(matrix,50);
-
-
-/* =========================
-   TERMINAL
-========================= */
-
-function terminalCommand(event){
-
-if(event.key!=="Enter")return;
-
-const input=
-document.getElementById("terminalInput");
-
-const output=
-document.getElementById("terminalOutput");
-
-const command=
-input.value.trim().toLowerCase();
-
-if(command==="help"){
-
-output.innerHTML+=
-"<br><span class='prompt'>tejas@lab:~$</span> help<br>"+
-"commands: help | status | whoami | scan | clear";
-
-}
-
-else if(command==="status"){
-
-output.innerHTML+=
-"<br><span class='prompt'>tejas@lab:~$</span> status<br>"+
-"SYSTEM: ONLINE<br>"+
-"LAB: READY<br>"+
-"MODE: EDUCATIONAL";
-
-}
-
-else if(command==="whoami"){
-
-output.innerHTML+=
-"<br><span class='prompt'>tejas@lab:~$</span> whoami<br>"+
-"tejas — gamer / creator / technology enthusiast";
-
-}
-
-else if(command==="scan"){
-
-output.innerHTML+=
-"<br><span class='prompt'>tejas@lab:~$</span> scan<br>"+
-"Starting simulated lab scan...<br>"+
-"LAB-PC [SIMULATED] — OK<br>"+
-"LAB-SERVER [SIMULATED] — OK<br>"+
-"TEST-DEVICE [SIMULATED] — OK";
-
-}
-
-else if(command==="clear"){
-
-output.innerHTML=
-"<input id='terminalInput' "+
-"placeholder='Type a command...' "+
-"onkeydown='terminalCommand(event)'>";
-
-return;
-
-}
-
-else if(command){
-
-output.innerHTML+=
-"<br><span class='prompt'>tejas@lab:~$</span> "+
-command+
-"<br>Command not found. Type help.";
-
-}
-
-input.value="";
-
-}
-
-
-/* =========================
-   NETWORK SIMULATOR
-========================= */
-
-function runScan(){
-
-const out=
-document.getElementById("scanOutput");
-
-out.textContent=
-"Initializing safe simulation...";
-
-setTimeout(()=>{
-
-out.textContent+=
-"\nLoading educational lab...";
-
-},500);
-
-setTimeout(()=>{
-
-out.textContent+=
-"\nScanning fictional devices...";
-
-},1000);
-
-setTimeout(()=>{
-
-out.textContent+=
-"\n\nLAB-PC ........ ONLINE"+
-"\nLAB-SERVER ..... ONLINE"+
-"\nTEST-DEVICE .... ONLINE"+
-"\nROUTER-LAB ..... ONLINE"+
-"\n-------------------------"+
-"\n4 simulated devices found."+
-"\nNo real external systems scanned.";
-
-},1700);
-
-}
-
-
-/* =========================
-   PORT SIMULATOR
-========================= */
-
-function runPorts(){
-
-document.getElementById("portOutput").textContent=
-"LAB-SERVER [SIMULATED]\n\n"+
-"22  SSH    DEMO-OPEN\n"+
-"80  HTTP   DEMO-OPEN\n"+
-"443 HTTPS  DEMO-OPEN\n"+
-"21  FTP    DEMO-CLOSED\n"+
-"3306 DB    DEMO-CLOSED\n\n"+
-"Simulation complete.";
-
-}
-
-
-/* =========================
-   THREAT MONITOR
-========================= */
-
-function threatScan(){
-
-document.getElementById("threatOutput").textContent=
-"[SAFE] Browser integrity\n"+
-"[SAFE] HTTPS concept\n"+
-"[INFO] Simulated traffic checked\n"+
-"[SAFE] No external target contacted\n\n"+
-"THREAT LEVEL: LOW";
-
-}
-
-
-/* =========================
-   SECURITY SCORE
-========================= */
-
-function securityScore(){
-
-const boxes=
-document.querySelectorAll(".securityCheck");
-
-let checked=0;
-
-boxes.forEach(box=>{
-
-if(box.checked)
-checked++;
-
-});
-
-const percent=
-Math.round(
-checked/boxes.length*100
-);
-
-document.getElementById(
-"securityScore"
-).textContent=
-percent+"%";
-
-}
-
-
-/* =========================
-   CTF
-========================= */
-
-function addXP(amount){
-
-let xp=
-Number(
-localStorage.getItem("tejasXP")||0
-);
-
-xp+=amount;
-
-localStorage.setItem(
-"tejasXP",
-xp
-);
-
-document.getElementById("xp").textContent=
-xp+" XP";
-
-}
-
-function loadXP(){
-
-let xp=
-Number(
-localStorage.getItem("tejasXP")||0
-);
-
-document.getElementById("xp").textContent=
-xp+" XP";
-
-}
-
-loadXP();
-
-
-function checkCTF1(){
-
-let answer=
-document.getElementById("ctf1")
-.value
-.trim()
-.toLowerCase();
-
-let out=
-document.getElementById("ctf1Output");
-
-if(answer==="security"){
-
-out.textContent=
-"✓ CORRECT!\n+100 XP";
-
-addXP(100);
-
-}else{
-
-out.textContent=
-"✗ Incorrect. Try again.";
-
-}
-
-}
-
-
-function checkCTF2(){
-
-let answer=
-document.getElementById("ctf2")
-.value
-.trim()
-.toLowerCase();
-
-let out=
-document.getElementById("ctf2Output");
-
-if(answer==="security"){
-
-out.textContent=
-"✓ CORRECT!\n+200 XP";
-
-addXP(200);
-
-}else{
-
-out.textContent=
-"✗ Incorrect. Try again.";
-
-}
-
-}
-
-
-/* =========================
-   BASE64
-========================= */
-
-function encodeBase64(){
-
-try{
-
-const value=
-document.getElementById(
-"base64Input"
-).value;
-
-document.getElementById(
-"base64Output"
-).textContent=
-btoa(
-unescape(
-encodeURIComponent(value)
-)
-);
-
-}catch(e){
-
-document.getElementById(
-"base64Output"
-).textContent=
-"Encoding failed.";
-
-}
-
-}
-
-
-function decodeBase64(){
-
-try{
-
-const value=
-document.getElementById(
-"base64Input"
-).value;
-
-document.getElementById(
-"base64Output"
-).textContent=
-decodeURIComponent(
-escape(
-atob(value)
-)
-);
-
-}catch(e){
-
-document.getElementById(
-"base64Output"
-).textContent=
-"Invalid Base64.";
-
-}
-
-}
-
-
-/* =========================
-   PASSWORD GENERATOR
-========================= */
-
-function generatePassword(){
-
-const chars=
-"ABCDEFGHJKLMNPQRSTUVWXYZ"+
-"abcdefghijkmnopqrstuvwxyz"+
-"23456789!@#$%&*";
-
-let result="";
-
-for(let i=0;i<18;i++){
-
-result+=
-chars[
-Math.floor(
-Math.random()*chars.length
-)
-];
-
-}
-
-document.getElementById(
-"generatedPassword"
-).textContent=
-result;
-
-}
-
-
-/* =========================
-   SHA256
-========================= */
-
-async function makeHash(){
-
-const value=
-document.getElementById(
-"hashInput"
-).value;
-
-const data=
-new TextEncoder().encode(value);
-
-const hash=
-await crypto.subtle.digest(
-"SHA-256",
-data
-);
-
-const result=
-[...new Uint8Array(hash)]
-.map(
-b=>b.toString(16).padStart(2,"0")
-)
-.join("");
-
-document.getElementById(
-"hashOutput"
-).textContent=
-result;
-
-}
-
-
-/* =========================
-   CAESAR
-========================= */
-
-function caesarEncode(){
-
-const text=
-document.getElementById(
-"caesarInput"
-).value;
-
-const shift=
-Number(
-document.getElementById(
-"caesarShift"
-).value
-)||0;
-
-let result="";
-
-for(const ch of text){
-
-let code=
-ch.charCodeAt(0);
-
-if(code>=65&&code<=90){
-
-result+=String.fromCharCode(
-(code-65+shift+26)%26+65
-);
-
-}
-
-else if(code>=97&&code<=122){
-
-result+=String.fromCharCode(
-(code-97+shift+26)%26+97
-);
-
-}
-
-else{
-
-result+=ch;
-
-}
-
-}
-
-document.getElementById(
-"caesarOutput"
-).textContent=
-result;
-
-}
-
-
-/* =========================
-   QUIZ
-========================= */
-
-function quiz(){
-
-const answer=
-document.getElementById(
-"quizAnswer"
-).value;
-
-const out=
-document.getElementById(
-"quizOutput"
-);
-
-if(answer==="b"){
-
-out.textContent=
-"✓ Correct!\nUnique passwords + 2FA is safer.";
-
-}else{
-
-out.textContent=
-"✗ Not quite. Try again.";
-
-}
-
-}
-
-
-/* =========================
-   PHONE ANALYZER
-========================= */
-
-function analyzeNumber(){
-
-const raw=
-document.getElementById(
-"phone"
-).value.trim();
-
-const digits=
-raw.replace(/\D/g,"");
-
-let country="Unknown";
-
-if(raw.startsWith("+91"))
-country="India (+91)";
-
-else if(raw.startsWith("+1"))
-country="USA/Canada (+1)";
-
-else if(raw.startsWith("+44"))
-country="UK (+44)";
-
-else if(raw.startsWith("+61"))
-country="Australia (+61)";
-
-else if(raw.startsWith("+81"))
-country="Japan (+81)";
-
-else if(raw.startsWith("+971"))
-country="UAE (+971)";
-
-let valid=false;
-
-if(
-raw.startsWith("+91") &&
-digits.length===12
-)
-valid=true;
-
-else if(
-!raw.startsWith("+") &&
-digits.length===10
-)
-valid=true;
-
-else if(
-raw.startsWith("+") &&
-digits.length>=8 &&
-digits.length<=15
-)
-valid=true;
-
-document.getElementById(
-"countryCode"
-).textContent=
-country;
-
-document.getElementById(
-"numberFormat"
-).textContent=
-raw.startsWith("+")
-?"International"
-:"Local";
-
-document.getElementById(
-"numberStatus"
-).textContent=
-valid
-?"VALID FORMAT"
-:"CHECK FORMAT";
-
-document.getElementById(
-"numberOutput"
-).textContent=
-"Number analyzed locally.\n"+
-"Country recognition: "+country+
-"\nDigits detected: "+digits.length+
-"\n\nNo GPS location, identity or private subscriber data is retrieved.";
-
-}
-
-
-/* =========================
-   LOCATION
-========================= */
-
-function getLocation(){
-
-const output=
-document.getElementById(
-"locationOutput"
-);
-
-if(!navigator.geolocation){
-
-output.textContent=
-"Geolocation is not supported.";
-
-return;
-
-}
-
-output.textContent=
-"Requesting browser location permission...";
-
-navigator.geolocation.getCurrentPosition(
-
-async function(position){
-
-const lat=
-position.coords.latitude;
-
-const lon=
-position.coords.longitude;
-
-output.textContent=
-"Location received. Looking up address...";
-
-try{
-
-const response=
-await fetch(
-"https://nominatim.openstreetmap.org/reverse"+
-"?format=jsonv2"+
-"&lat="+lat+
-"&lon="+lon+
-"&zoom=18"+
-"&addressdetails=1"
-);
-
-const data=
-await response.json();
-
-const a=
-data.address||{};
-
-document.getElementById(
-"address"
-).textContent=
-data.display_name||"Unavailable";
-
-document.getElementById(
-"city"
-).textContent=
-a.city||
-a.town||
-a.village||
-a.suburb||
-"—";
-
-document.getElementById(
-"state"
-).textContent=
-a.state||"—";
-
-document.getElementById(
-"country"
-).textContent=
-a.country||"—";
-
-document.getElementById(
-"postcode"
-).textContent=
-a.postcode||"—";
-
-const z=.005;
-
-document.getElementById(
-"map"
-).src=
-"https://www.openstreetmap.org/export/embed.html"+
-"?bbox="+
-(lon-z)+","+
-(lat-z)+","+
-(lon+z)+","+
-(lat+z)+
-"&layer=mapnik"+
-"&marker="+lat+","+lon;
-
-const maps=
-document.getElementById(
-"googleMaps"
-);
-
-maps.href=
-"https://www.google.com/maps/search/?api=1&query="+
-lat+","+lon;
-
-maps.style.display=
-"inline-block";
-
-output.textContent=
-"✓ Address and map loaded.\n"+
-"Location was obtained with browser permission.";
-
-}catch(error){
-
-output.textContent=
-"Location received, but address lookup failed.";
-
-}
-
-},
-
-function(error){
-
-if(error.code===1){
-
-output.textContent=
-"Location permission denied.";
-
-}
-
-else if(error.code===2){
-
-output.textContent=
-"Location unavailable.";
-
-}
-
-else{
-
-output.textContent=
-"Location request timed out.";
-
-}
-
-},
-
-{
-enableHighAccuracy:true,
-timeout:15000,
-maximumAge:0
-}
-
-);
-
-}
-
-
-/* =========================
-   HOST
-========================= */
-
-function hostLogin(){
-
-const password=
-document.getElementById(
-"hostPassword"
-).value;
-
-const output=
-document.getElementById(
-"hostOutput"
-);
-
-if(password==="tejasbhaiop"){
-
-document.getElementById(
-"hostDashboard"
-).style.display=
-"block";
-
-output.textContent=
-"✓ HOST ACCESS GRANTED";
-
-let visits=
-Number(
-localStorage.getItem(
-"tejasVisits"
-)||0
-);
-
-visits++;
-
-localStorage.setItem(
-"tejasVisits",
-visits
-);
-
-document.getElementById(
-"visitCount"
-).textContent=
-visits;
-
-}else{
-
-output.textContent=
-"✗ ACCESS DENIED";
-
-}
-
-}
-
-
-/* =========================
-   PAGE VISIT COUNTER
-========================= */
-
-(function(){
-
-let visits=
-Number(
-localStorage.getItem(
-"tejasVisits"
-)||0
-);
-
-visits++;
-
-localStorage.setItem(
-"tejasVisits",
-visits
-);
-
-})();
-
+const canvas=document.getElementById("matrix"),ctx=canvas.getContext("2d");let drops=[];
+function resizeCanvas(){canvas.width=innerWidth;canvas.height=innerHeight;drops=Array(Math.floor(canvas.width/14)).fill(1)}
+resizeCanvas();addEventListener("resize",resizeCanvas);
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$";const size=14;
+setInterval(()=>{ctx.fillStyle="rgba(2,6,4,.08)";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#00ff88";ctx.font=size+"px monospace";for(let i=0;i<drops.length;i++){ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*size,drops[i]*size);if(drops[i]*size>canvas.height&&Math.random()>.975)drops[i]=0;drops[i]++}},50);
+
+function terminalCommand(e){if(e.key!=="Enter")return;const input=document.getElementById("terminalInput"),out=document.getElementById("terminalOutput"),c=input.value.trim().toLowerCase();
+if(c==="help")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> help<br>commands: help | status | whoami | projects | clear";
+else if(c==="status")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> status<br>SYSTEM: ONLINE<br>LAB: READY<br>MODE: EDUCATIONAL";
+else if(c==="whoami")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> whoami<br>tejas — technology enthusiast / creator";
+else if(c==="projects")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> projects<br>Cyber Lab | CTF Arena | Utility Deck | Portfolio";
+else if(c==="clear"){out.innerHTML="<input id='terminalInput' placeholder='Type a command...' onkeydown='terminalCommand(event)'>";return}
+else if(c)out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> "+escapeHTML(c)+"<br>Command not found. Type help.";
+input.value=""}
+function escapeHTML(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+function runScan(){const o=document.getElementById("scanOutput");o.textContent="Initializing safe simulation...";setTimeout(()=>o.textContent+="\nLoading fictional lab...",450);setTimeout(()=>o.textContent+="\nChecking simulated devices...",900);setTimeout(()=>o.textContent+="\n\nLAB-PC ........ ONLINE\nLAB-SERVER ..... ONLINE\nTEST-DEVICE .... ONLINE\nROUTER-LAB ..... ONLINE\n-------------------------\n4 simulated devices found.\nNo real external systems scanned.",1400)}
+function runPorts(){document.getElementById("portOutput").textContent="LAB-SERVER [SIMULATED]\n\n22  SSH    DEMO-OPEN\n80  HTTP   DEMO-OPEN\n443 HTTPS  DEMO-OPEN\n21  FTP    DEMO-CLOSED\n3306 DB    DEMO-CLOSED\n\nSimulation complete."}
+function threatScan(){document.getElementById("threatOutput").textContent="[SAFE] Browser page\n[SAFE] HTTPS concept\n[INFO] Simulated traffic checked\n[SAFE] No external target contacted\n\nTHREAT LEVEL: LOW"}
+function securityScore(){let b=document.querySelectorAll(".securityCheck"),n=[...b].filter(x=>x.checked).length;document.getElementById("securityScore").textContent=Math.round(n/b.length*100)+"%"}
+
+function addXP(n){let x=+localStorage.getItem("tejasXP")||0;x+=n;localStorage.setItem("tejasXP",x);loadXP()}
+function loadXP(){document.getElementById("xp").textContent=(+localStorage.getItem("tejasXP")||0)+" XP";if(document.getElementById("hostXP"))document.getElementById("hostXP").textContent=+localStorage.getItem("tejasXP")||0}loadXP();
+function checkCTF1(){let a=document.getElementById("ctf1").value.trim().toLowerCase(),o=document.getElementById("ctf1Output");if(a==="security"){o.textContent="✓ CORRECT!\n+100 XP";addXP(100)}else o.textContent="✗ Incorrect. Try again."}
+function checkCTF2(){let a=document.getElementById("ctf2").value.trim().toLowerCase(),o=document.getElementById("ctf2Output");if(a==="security"){o.textContent="✓ CORRECT!\n+200 XP";addXP(200)}else o.textContent="✗ Incorrect. Try again."}
+
+function encodeBase64(){try{document.getElementById("base64Output").textContent=btoa(unescape(encodeURIComponent(document.getElementById("base64Input").value)))}catch(e){document.getElementById("base64Output").textContent="Encoding failed."}}
+function decodeBase64(){try{document.getElementById("base64Output").textContent=decodeURIComponent(escape(atob(document.getElementById("base64Input").value)))}catch(e){document.getElementById("base64Output").textContent="Invalid Base64."}}
+function generatePassword(){const c="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*";let r="";for(let i=0;i<18;i++)r+=c[Math.floor(Math.random()*c.length)];document.getElementById("generatedPassword").textContent=r}
+async function makeHash(){const d=new TextEncoder().encode(document.getElementById("hashInput").value),h=await crypto.subtle.digest("SHA-256",d);document.getElementById("hashOutput").textContent=[...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,"0")).join("")}
+function caesar(text,shift){return [...text].map(ch=>{let c=ch.charCodeAt(0);if(c>=65&&c<=90)return String.fromCharCode((c-65+shift+26)%26+65);if(c>=97&&c<=122)return String.fromCharCode((c-97+shift+26)%26+97);return ch}).join("")}
+function caesarEncode(){document.getElementById("caesarOutput").textContent=caesar(document.getElementById("caesarInput").value,+document.getElementById("caesarShift").value||0)}
+function caesarDecode(){document.getElementById("caesarOutput").textContent=caesar(document.getElementById("caesarInput").value,-(+document.getElementById("caesarShift").value||0))}
+function convertUnits(){let k=+document.getElementById("km").value;if(!isFinite(k))return document.getElementById("unitOutput").textContent="Enter a number.";document.getElementById("unitOutput").textContent=`${k} km = ${(k*1000).toFixed(2)} m\n${k} km = ${(k*0.621371).toFixed(3)} miles`}
+function quiz(){let a=document.getElementById("quizAnswer").value;document.getElementById("quizOutput").textContent=a==="b"?"✓ Correct! Unique passwords + 2FA is safer.":"✗ Not quite. Try again."}
+
+function analyzeNumber(){let raw=document.getElementById("phone").value.trim(),d=raw.replace(/\D/g,""),country="Unknown";if(raw.startsWith("+91"))country="India (+91)";else if(raw.startsWith("+1"))country="USA/Canada (+1)";else if(raw.startsWith("+44"))country="UK (+44)";else if(raw.startsWith("+61"))country="Australia (+61)";else if(raw.startsWith("+81"))country="Japan (+81)";else if(raw.startsWith("+971"))country="UAE (+971)";let valid=(raw.startsWith("+91")&&d.length===12)||(!raw.startsWith("+")&&d.length===10)||(raw.startsWith("+")&&d.length>=8&&d.length<=15);document.getElementById("countryCode").textContent=country;document.getElementById("numberFormat").textContent=raw.startsWith("+")?"International":"Local";document.getElementById("numberStatus").textContent=valid?"VALID FORMAT":"CHECK FORMAT";document.getElementById("numberOutput").textContent="Analyzed locally.\nDigits detected: "+d.length+"\nNo GPS location, identity or subscriber data is retrieved."}
+
+function getLocation(){const o=document.getElementById("locationOutput");if(!navigator.geolocation)return o.textContent="Geolocation is not supported.";o.textContent="Requesting browser location permission...";navigator.geolocation.getCurrentPosition(async p=>{let lat=p.coords.latitude,lon=p.coords.longitude;o.textContent="Location received. Looking up address...";try{let r=await fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="+lat+"&lon="+lon+"&zoom=18&addressdetails=1"),data=await r.json(),a=data.address||{};document.getElementById("address").textContent=data.display_name||"Unavailable";document.getElementById("city").textContent=a.city||a.town||a.village||a.suburb||"—";document.getElementById("state").textContent=a.state||"—";document.getElementById("country").textContent=a.country||"—";document.getElementById("map").src="https://www.openstreetmap.org/export/embed.html?bbox="+(lon-.005)+","+(lat-.005)+","+(lon+.005)+","+(lat+.005)+"&layer=mapnik&marker="+lat+","+lon;let m=document.getElementById("googleMaps");m.href="https://www.google.com/maps/search/?api=1&query="+lat+","+lon;m.style.display="inline-block";o.textContent="✓ Address and map loaded.\nLocation was obtained with browser permission."}catch(e){o.textContent="Location received, but address lookup failed."}},e=>{o.textContent=e.code===1?"Location permission denied.":e.code===2?"Location unavailable.":"Location request timed out."},{enableHighAccuracy:true,timeout:15000,maximumAge:0})}
+
+function hostLogin(){let p=document.getElementById("hostPassword").value,o=document.getElementById("hostOutput");if(p==="tejasbhaiop"){document.getElementById("hostDashboard").classList.remove("hidden");o.textContent="✓ HOST ACCESS GRANTED";document.getElementById("visitCount").textContent=localStorage.getItem("tejasVisits")||0;loadXP()}else{o.textContent="✗ ACCESS DENIED";document.getElementById("hostDashboard").classList.add("hidden")}}
+function resetLocalData(){if(confirm("Reset local demo data?")){localStorage.removeItem("tejasVisits");localStorage.removeItem("tejasXP");location.reload()}}
+
+(function(){let v=(+localStorage.getItem("tejasVisits")||0)+1;localStorage.setItem("tejasVisits",v)})();
 </script>
-
 </body>
 </html>
