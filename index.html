@@ -51,6 +51,13 @@ footer{text-align:center;padding:32px;border-top:1px solid #12351f;color:#48604f
 .hidden{display:none!important}.success{color:#00ff88}.danger{color:#ff6b6b}
 .notice{font-size:11px;color:#557261;margin-top:9px}
 .project-link{color:#00ff88;text-decoration:none}.project-link:hover{text-decoration:underline}
+
+/* --- TEJAS BIO SPECIAL MODAL & CARDS --- */
+.bio-card{border:1px solid #00aa5a;background:linear-gradient(135deg, #05180d 0%, #020604 100%);padding:30px;border-radius:8px;box-shadow:0 0 20px #00ff8815}
+.bio-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(2,6,4,0.9);backdrop-filter:blur(10px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px}
+.bio-modal-content{background:#030c06;border:2px solid #00ff88;border-radius:8px;max-width:600px;width:100%;padding:30px;box-shadow:0 0 40px #00ff8833;position:relative}
+.close-btn{position:absolute;top:15px;right:20px;color:#00ff88;font-size:22px;cursor:pointer;font-weight:bold}
+
 @media(max-width:700px){nav a{display:none}section{padding:75px 6%}.hero{padding-top:120px}.hero h1{font-size:62px}}
 </style>
 </head>
@@ -60,7 +67,7 @@ footer{text-align:center;padding:32px;border-top:1px solid #12351f;color:#48604f
 <nav>
   <div class="logo">TEJAS//</div>
   <div>
-    <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#lab">LAB</a>
+    <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#bio">BIO</a><a href="#lab">LAB</a>
     <a href="#ctf">CTF</a><a href="#tools">TOOLS</a><a href="#projects">PROJECTS</a>
     <a href="#host">HOST</a><a href="#contact">CONTACT</a>
   </div>
@@ -71,7 +78,7 @@ footer{text-align:center;padding:32px;border-top:1px solid #12351f;color:#48604f
 <div class="status">● SYSTEM ONLINE // EDUCATIONAL CYBER LAB</div>
 <h1>CYBER<br><span>TEJAS.</span></h1>
 <p class="hero-text">Welcome to TEJAS Cyber Lab — a personal technology portfolio for learning cybersecurity, web development, programming, networking concepts and digital safety through safe simulations and interactive tools.</p>
-<a class="btn" href="#lab">ENTER LAB</a><a class="btn" href="#projects">VIEW PROJECTS</a>
+<a class="btn" href="#bio">ABOUT TEJAS</a><a class="btn" href="#lab">ENTER LAB</a><a class="btn" href="#projects">VIEW PROJECTS</a>
 <div class="terminal">
 <div class="terminal-top">TEJAS@CYBER-LAB — TERMINAL</div>
 <div class="terminal-body" id="terminalOutput">
@@ -95,6 +102,46 @@ footer{text-align:center;padding:32px;border-top:1px solid #12351f;color:#48604f
 <div class="card"><div class="card-icon">🎮</div><h3>Gaming</h3><p>Gaming, experiments and technology projects.</p></div>
 <div class="card"><div class="card-icon">🌐</div><h3>Networking</h3><p>Understanding ports, protocols and network concepts through simulations.</p></div>
 </div></div></section>
+
+<!-- NEW SECTION: TEJAS PERSONAL BIO -->
+<section id="bio"><div class="container">
+<div class="label">01.5 // BIOGRAPHY</div><h2 class="title">Personal <span>Dossier</span></h2>
+<div class="bio-card">
+  <h3 style="color:#00ff88;font-size:24px;margin-bottom:10px">⚡ TEJAS // CADET PROFILE</h3>
+  <p style="margin-bottom:20px;color:#a3c2ad">Click below to unlock personal profile and academic credentials.</p>
+  <button class="btn" onclick="openBioModal()">⚡ VIEW DETAILED DOSSIER</button>
+  <div class="data-grid" style="margin-top:20px">
+    <div class="data"><small>NAME</small><strong>TEJAS</strong></div>
+    <div class="data"><small>GRADE / CLASS</small><strong>Class 8th</strong></div>
+    <div class="data"><small>INSTITUTION</small><strong>DAV Public School</strong></div>
+    <div class="data"><small>LOCATION</small><strong>Mokama, Bihar (803302)</strong></div>
+  </div>
+</div>
+</div></section>
+
+<!-- BIO MODAL POPUP -->
+<div id="bioModal" class="bio-modal hidden">
+  <div class="bio-modal-content">
+    <span class="close-btn" onclick="closeBioModal()">&times;</span>
+    <div class="label">CLASSIFIED DOSSIER</div>
+    <h2 style="color:#00ff88;margin:10px 0 20px">TEJAS // INFO CARD</h2>
+    <div style="line-height:1.8;color:#d0edd8;font-size:14px">
+      <p>🔹 <strong>Full Name:</strong> Tejas</p>
+      <p>📚 <strong>Standard:</strong> Class 8 Student</p>
+      <p>🏫 <strong>School:</strong> DAV Public School, Mokama</p>
+      <p>📍 <strong>Base Location:</strong> Mokama, Bihar — 803302, India</p>
+      <p>🎯 <strong>Specialization:</strong> Cyber Security, Web Development, Gaming & Code Logic</p>
+      <p>🚀 <strong>Mission:</strong> Mastering technology step-by-step and creating high-level cyber projects!</p>
+    </div>
+    <div style="margin-top:20px">
+      <span class="badge">Young Tech Leader</span>
+      <span class="badge">DAV Mokama</span>
+      <span class="badge">Class 8 Coder</span>
+    </div>
+    <br>
+    <button class="btn" onclick="closeBioModal()">CLOSE DOSSIER</button>
+  </div>
+</div>
 
 <section id="lab"><div class="container">
 <div class="label">02 // CYBER LAB</div><h2 class="title">Defense <span>Tools</span></h2>
@@ -182,12 +229,15 @@ setInterval(()=>{ctx.fillStyle="rgba(2,6,4,.08)";ctx.fillRect(0,0,canvas.width,c
 function terminalCommand(e){if(e.key!=="Enter")return;const input=document.getElementById("terminalInput"),out=document.getElementById("terminalOutput"),c=input.value.trim().toLowerCase();
 if(c==="help")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> help<br>commands: help | status | whoami | projects | clear";
 else if(c==="status")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> status<br>SYSTEM: ONLINE<br>LAB: READY<br>MODE: EDUCATIONAL";
-else if(c==="whoami")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> whoami<br>tejas — technology enthusiast / creator";
+else if(c==="whoami")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> whoami<br>tejas — Class 8 Student @ DAV Public School Mokama";
 else if(c==="projects")out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> projects<br>Cyber Lab | CTF Arena | Utility Deck | Portfolio";
 else if(c==="clear"){out.innerHTML="<input id='terminalInput' placeholder='Type a command...' onkeydown='terminalCommand(event)'>";return}
 else if(c)out.innerHTML+="<br><span class='prompt'>tejas@lab:~$</span> "+escapeHTML(c)+"<br>Command not found. Type help.";
 input.value=""}
 function escapeHTML(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+function openBioModal(){document.getElementById("bioModal").classList.remove("hidden")}
+function closeBioModal(){document.getElementById("bioModal").classList.add("hidden")}
 
 function runScan(){const o=document.getElementById("scanOutput");o.textContent="Initializing safe simulation...";setTimeout(()=>o.textContent+="\nLoading fictional lab...",450);setTimeout(()=>o.textContent+="\nChecking simulated devices...",900);setTimeout(()=>o.textContent+="\n\nLAB-PC ........ ONLINE\nLAB-SERVER ..... ONLINE\nTEST-DEVICE .... ONLINE\nROUTER-LAB ..... ONLINE\n-------------------------\n4 simulated devices found.\nNo real external systems scanned.",1400)}
 function runPorts(){document.getElementById("portOutput").textContent="LAB-SERVER [SIMULATED]\n\n22  SSH    DEMO-OPEN\n80  HTTP   DEMO-OPEN\n443 HTTPS  DEMO-OPEN\n21  FTP    DEMO-CLOSED\n3306 DB    DEMO-CLOSED\n\nSimulation complete."}
